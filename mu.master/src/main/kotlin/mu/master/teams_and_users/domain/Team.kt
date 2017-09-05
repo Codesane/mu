@@ -18,8 +18,8 @@ class Team() : AggregateRoot() {
     override val id: AggregateRootId get() = AggregateRootId(_id.value)
 
     constructor(teamId: TeamId, displayName: String, teamAdmin: UserId, createdBy: UserId, userExistenceChecker: IUserExistenceChecker): this() {
-        require(userExistenceChecker.doesUserExist(teamAdmin)) {"User <$teamAdmin> does not exist!" }
-        require(userExistenceChecker.doesUserExist(createdBy)) {"User <$createdBy> does not exist!" }
+        require(userExistenceChecker.doesUserExist(teamAdmin)) { "User <$teamAdmin> does not exist!" }
+        require(userExistenceChecker.doesUserExist(createdBy)) { "User <$createdBy> does not exist!" }
 
         applyChange(TeamCreated(teamId, teamAdmin, displayName, createdBy))
     }
